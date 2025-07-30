@@ -1,15 +1,18 @@
+import { deepClone } from "./clone";
+
 /**
  *
- * @param arr
- * @param key
- * @param parentKey
- * @returns tree
+ * @param arr 原数组
+ * @param key 唯一标识
+ * @param parentKey 父级标识
+ * @returns tree 树状数组
  */
 export function array2Tree(arr: any[], key: string, parentKey: string): any[] {
+  const cloneArr = deepClone(arr);
   const map: any = {};
   const roots: any[] = [];
 
-  for (const obj of arr) {
+  for (const obj of cloneArr) {
     // 当前obj的id
     const id: string = obj[key];
     // 当前obj的父级id
