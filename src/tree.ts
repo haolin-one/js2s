@@ -14,8 +14,6 @@ export function array2Tree(arr: any[], key: string, parentKey: string): any[] {
     const id: string = obj[key];
     // 当前obj的父级id
     const parentId: string = obj[parentKey];
-    // 设置obj的子集合为空
-    obj.children = [];
 
     // 已经有子集存在于map中
     if (map[id]) {
@@ -31,6 +29,7 @@ export function array2Tree(arr: any[], key: string, parentKey: string): any[] {
     } else {
       if (map[parentId]) {
         // 父级存在于map中
+        if (!map[parentId].children) map[parentId].children = [];
         map[parentId].children.push(obj);
       } else {
         // 先将子级存到map中
